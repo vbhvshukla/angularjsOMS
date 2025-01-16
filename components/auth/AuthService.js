@@ -14,14 +14,23 @@ mainApp.factory("authService", function ($q, $state) {
     localStorage.setItem("users", JSON.stringify(users));
   }
 
-  authService.register = function (credentials) {
-    var deferred = $q.defer();
+  function isUsernameTaken(username) {
     const users = getUsers();
-    const isUsernameTaken = users.some(
-      (u) => u.username === credentials.username
-    );
+    return users.some((u) => u.username === username);
+  }
 
-    if (isUsernameTaken) {
+  function isValidCredentials(username, password) {
+    const users = getUsers();
+    const hashedPassword = CryptoJS.SHA256(password).toString();
+    return users.find(
+      (u) => u.username === username && u.password === hashedPassword
+    );
+  }
+
+  authService.register = function (credentials) {
+    const deferred = $q.defer();
+    const users = getUsers();
+    if (isUsernameTaken(credentials.username)) {
       deferred.reject("Username is already taken");
     } else {
       credentials.password = CryptoJS.SHA256(credentials.password).toString();
@@ -34,15 +43,10 @@ mainApp.factory("authService", function ($q, $state) {
   };
 
   authService.login = function (credentials) {
-    var deferred = $q.defer();
-    const users = getUsers();
-    const hashedPassword = CryptoJS.SHA256(credentials.password).toString();
-    const user = users.find(
-      (u) =>
-        u.username === credentials.username && u.password === hashedPassword
-    );
-    const { password, ...userWithoutPassword } = user;
+    const deferred = $q.defer();
+    const user = isValidCredentials(credentials.username, credentials.password);
     if (user) {
+      const { password, ...userWithoutPassword } = user;
       localStorage.setItem("user", JSON.stringify(userWithoutPassword));
       deferred.resolve(userWithoutPassword);
     } else {
@@ -66,13 +70,6 @@ mainApp.factory("authService", function ($q, $state) {
 
   authService.getUser = function () {
     return JSON.parse(localStorage.getItem("user"));
-  };
-
-  authService.init = function () {
-    // const storedUser = JSON.parse(localStorage.getItem('user'));
-    // if(storedUser){
-    //   user = storedUser;
-    // }
   };
 
   return authService;

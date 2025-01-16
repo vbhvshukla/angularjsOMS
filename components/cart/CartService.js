@@ -1,22 +1,24 @@
 mainApp.factory("cartService", function ($q, $state) {
   const cartService = {};
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
+  
+  function saveToLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
   }
+
   cartService.addToCart = function (cartItem) {
     const deferred = $q.defer();
     try {
       const existingItem = cart.find((item) => item.id === cartItem.id);
       if (existingItem) {
-        existingItem.quantity =cartItem.quantity;
+        existingItem.quantity = cartItem.quantity;
       } else {
         cart.push(cartItem);
       }
-      saveCart();
-      deferred.resolve("Added to cart sucessfully");
+      saveToLocalStorage("cart", cart);
+      deferred.resolve("Added to cart successfully");
     } catch (error) {
-      deferred.reject("Failed to add item : " + error);
+      deferred.reject("Failed to add item: " + error);
     }
     return deferred.promise;
   };
@@ -25,10 +27,10 @@ mainApp.factory("cartService", function ($q, $state) {
     const deferred = $q.defer();
     try {
       cart = cart.filter((item) => item.id !== cartItem.id);
-      saveCart();
+      saveToLocalStorage("cart", cart);
       deferred.resolve("Item removed from cart");
     } catch (error) {
-      deferred.reject("Failed to remove item : " + error);
+      deferred.reject("Failed to remove item: " + error);
     }
     return deferred.promise;
   };
@@ -50,10 +52,11 @@ mainApp.factory("cartService", function ($q, $state) {
     try {
       deferred.resolve(cart);
     } catch (error) {
-      deferred.reject("Cart couldn't be get: " + error);
+      deferred.reject("Cart couldn't be retrieved: " + error);
     }
     return deferred.promise;
   };
+
   cartService.getTotal = function () {
     const deferred = $q.defer();
     try {
@@ -63,9 +66,10 @@ mainApp.factory("cartService", function ($q, $state) {
       );
       deferred.resolve(totalValue);
     } catch (error) {
-      deferred.reject("failed to get total price: " + error);
+      deferred.reject("Failed to get total price: " + error);
     }
     return deferred.promise;
   };
+
   return cartService;
 });

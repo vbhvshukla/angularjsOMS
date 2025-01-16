@@ -1,4 +1,4 @@
-mainApp.factory("ordersService", function ($q,productsService) {
+mainApp.factory("ordersService", function ($q, productsService) {
   const ordersService = {};
   const user = JSON.parse(localStorage.getItem("user"));
   const username = user ? user.username : null;
@@ -12,6 +12,11 @@ mainApp.factory("ordersService", function ($q,productsService) {
     const deferred = $q.defer();
     if (username) {
       const userOrders = orders.filter((order) => order.username === username);
+      if (userOrders.length === 0) {
+        deferred.reject("No orders found for this user.");
+        return deferred.promise;
+      }
+
       const orderPromises = userOrders.map((order) => {
         return productsService
           .getProductsByIds(order.productId)
@@ -20,6 +25,7 @@ mainApp.factory("ordersService", function ($q,productsService) {
             return order;
           });
       });
+
       $q.all(orderPromises).then((resolvedOrders) => {
         deferred.resolve(resolvedOrders);
       });
@@ -42,47 +48,56 @@ mainApp.factory("ordersService", function ($q,productsService) {
 
   ordersService.getAllOrders = function () {
     const deferred = $q.defer();
-    const orderPromises = orders.map(order => {
-        return productsService.getProductsByIds(order.productId).then(products => {
-            order.items = products;
-            return order;
+    if (orders.length === 0) {
+      deferred.resolve([]);
+    }
+
+    const orderPromises = orders.map((order) => {
+      return productsService
+        .getProductsByIds(order.productId)
+        .then((products) => {
+          order.items = products;
+          return order;
         });
     });
-    $q.all(orderPromises).then(resolvedOrders => {
-        deferred.resolve(resolvedOrders);
+
+    $q.all(orderPromises).then((resolvedOrders) => {
+      deferred.resolve(resolvedOrders);
     });
     return deferred.promise;
-};
+  };
 
-ordersService.placeOrder = function (productIds) {
+  ordersService.placeOrder = function (productIds) {
     const deferred = $q.defer();
     if (username) {
-        const newOrder = {
-            username: username,
-            productId: productIds,
-            orderId: Date.now(),
-            placedAt: new Date().toISOString()
-        };
-        orders.push(newOrder);
-        saveOrders();
-        deferred.resolve(newOrder);
+      const newOrder = {
+        username: username,
+        productId: productIds,
+        orderId: Date.now(),
+        placedAt: new Date().toISOString(),
+      };
+      orders.push(newOrder);
+      saveOrders();
+      deferred.resolve(newOrder);
     } else {
-        deferred.reject("Unable to place order");
+      deferred.reject("Unable to place order");
     }
     return deferred.promise;
-};
-ordersService.cancelOrder = function (orderId) {
+  };
+
+  ordersService.cancelOrder = function (orderId) {
     const deferred = $q.defer();
-    const orderIndex = orders.findIndex(order => order.orderId === orderId && order.username === username);
+    const orderIndex = orders.findIndex(
+      (order) => order.orderId === orderId && order.username === username);
     if (orderIndex !== -1) {
-        orders.splice(orderIndex, 1);
-        saveOrders();
-        deferred.resolve("Order cancelled successfully");
+      orders.splice(orderIndex, 1);
+      saveOrders();
+      deferred.resolve("Order cancelled successfully");
     } else {
-        deferred.reject("Order not found");
+      deferred.reject("Order not found");
     }
     return deferred.promise;
-};
+  };
 
   return ordersService;
 });

@@ -30,8 +30,8 @@ mainApp.factory("productsService", function ($q, $state) {
     );
   }
 
-  function saveProducts() {
-    localStorage.setItem("products", JSON.stringify(products));
+  function saveToLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
   productsService.getProducts = function () {
@@ -53,8 +53,8 @@ mainApp.factory("productsService", function ($q, $state) {
       product.id = Math.floor(1000 + Math.random() * 9000);
       product.price = parseFloat(product.price);
       products.push(product);
-      saveProducts();
-      deferred.resolve("Product added sucesfully!");
+      saveToLocalStorage("products", products); // Use shared save function
+      deferred.resolve("Product added successfully!");
     } catch (error) {
       deferred.reject("Product couldn't be added");
     }
@@ -71,13 +71,14 @@ mainApp.factory("productsService", function ($q, $state) {
         throw new Error("Product not found");
       }
       products.splice(prodIndex, 1);
-      saveProducts();
+      saveToLocalStorage("products", products);
       deferred.resolve("Product removed successfully!");
     } catch (error) {
       deferred.reject("Couldn't remove product: " + error);
     }
     return deferred.promise;
   };
+
   productsService.getProductsByIds = function (productIds) {
     const deferred = $q.defer();
     const filteredProducts = products.filter((product) =>

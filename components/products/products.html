@@ -135,14 +135,13 @@
                 <div ng-if="!product.inCart">
                     <button class="btn btn-custom" ng-click="addToCart(product)">Add to Cart</button>
                 </div>
-                <div class="quantity-selector" ng-if="product.inCart || localStorage.getItem('cart')">
+                <div class="quantity-selector" ng-if="product.inCart || isInCart(product)">
                     <button ng-click="decreaseQuantity(product)">-</button>
                     <span>{{product.quantity}}</span>
                     <button ng-click="increaseQuantity(product)">+</button>
                 </div>
             </div>
         </div>
-        <button class="view-cart-button" ng-click="viewCart()">View Cart</button>
-
+        <!-- <button class="view-cart-button" ng-click="viewCart()">View Cart</button> -->
     </div>
 </section>

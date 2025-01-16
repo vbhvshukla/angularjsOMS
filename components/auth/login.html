@@ -122,6 +122,8 @@
     .sign-up-link:hover {
         color: #ff7043;
     }
+
+    
 </style>
 <section class="gradient-custom" ng-controller="authController">
     <div class="login-container">
@@ -129,21 +131,29 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="login-card">
                     <div class="login-card-body">
-                        <form ng-submit="login(authUser)">
+                        <form ng-submit="login(authUser)" name="loginForm">
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 <h2 class="login-heading">Login</h2>
                                 <p class="login-subheading">Please enter your login and password!</p>
+                                <div ng-if="errorMessage" class="alert alert-danger">
+                                    {{ errorMessage }}
+                                </div>
                                 <div class="form-outline">
                                     <label class="form-label" for="username">Username</label>
                                     <input type="text" id="username" class="form-control form-control-lg"
-                                        ng-model="authUser.username" ng-model-options="{ debounce: 250 }" />
+                                           ng-model="authUser.username" ng-model-options="{ debounce: 250 }"
+                                           ng-required="true" />
                                 </div>
-                                <div class=" form-outline">
+                                <div class="form-outline">
                                     <label class="form-label" for="password">Password</label>
                                     <input type="password" id="password" class="form-control form-control-lg"
-                                        ng-model="authUser.password" ng-model-options="{ debounce: 250 }" ng-required/>
+                                           ng-model="authUser.password" ng-model-options="{ debounce: 250 }"
+                                           ng-required="true" />
                                 </div>
-                                <button class=" login-button" type="submit">Login</button>
+
+                                <button class="login-button" type="submit" ng-disabled="loginForm.$invalid">
+                                    Login
+                                </button>
                             </div>
                         </form>
                         <div>

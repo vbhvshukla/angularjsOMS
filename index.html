@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mainModule">
+<html lang="en" ng-app="mainApp">
 
 <head>
   <meta charset="UTF-8">
@@ -25,7 +25,7 @@
   <script src="/components/auth/authController.js"></script>
   <script src="/components/products/productsController.js"></script>
   <script src="/components/orders/ordersController.js"></script>
-  <script src="/components/navbar/mainController.js"></script>
+  <script src="/components/navbar/navbarController.js"></script>
   <script src="/components/auth/AuthService.js"></script>
   <script src="/components/products/ProductService.js"></script>
   <script src="/components/cart/CartService.js"></script>
@@ -41,7 +41,7 @@
   <base href="/" />
 </head>
 
-<body ng-controller="mainController">
+<body>
   
   <div ng-include="'components/navbar/navbar.html'"></div>
 

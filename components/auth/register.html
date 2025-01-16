@@ -123,69 +123,46 @@
         color: #ff7043;
     }
 </style>
-<!-- <section class="gradient-custom">
-    <div class="signup-container">
-        <div class="signup-row">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="signup-card">
-                    <div class="signup-card-body">
-                        <div class="mb-md-5 mt-md-4 pb-5">
-                            <h2 class="signup-heading">Register</h2>
-                            <p class="signup-subheading">Please enter your username and password!</p>
-                            <div class="form-outline">
-                                <label class="form-label" for="username">Username</label>
-                                <input type="text" id="username" class="form-control form-control-lg"
-                                    ng-model="newUser.username" />
-                            </div>
-                            <div class="form-outline">
-                                <label class="form-label" for="password">Password</label>
-                                <input type="password" id="password" class="form-control form-control-lg"
-                                    ng-model="newUser.password" />
-                            </div>
-                            <button class="signup-button" type="submit">Register</button>
-                        </div>
-                        <div>
-                            <p class="mb-0">Already have an account? <a ui-sref="register" class="login-link">Login</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <section class="gradient-custom" ng-controller="authController">
     <div class="signup-container">
         <div class="signup-row">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="signup-card">
                     <div class="signup-card-body">
-                        <form name="myForm" ng-submit="register(newUser)">
+                        <form name="myForm" ng-submit="register(newUser)" novalidate>
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 <h2 class="signup-heading">Register</h2>
                                 <p class="signup-subheading">Please enter your username and password!</p>
+
                                 <div class="form-outline">
                                     <label class="form-label" for="username">Username</label>
-                                    <input type="text" id="username" name="username" class="form-control form-control-lg"
-                                        ng-model="newUser.username" ng-required="true" ng-minlength="4" ng-trim      />
+                                    <input type="text" id="username" name="username"
+                                        class="form-control form-control-lg" ng-model="newUser.username"
+                                        ng-required="true" ng-minlength="4" ng-trim />
                                     <span ng-show="myForm.username.$error.minlength && myForm.username.$touched">
                                         Username must be at least 4 characters long.
                                     </span>
                                 </div>
+
                                 <div class="form-outline">
                                     <label class="form-label" for="password">Password</label>
-                                    <input type="password" id="password" name="password" class="form-control form-control-lg"
-                                        ng-model="newUser.password" ng-required
-                                        ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/" />
+                                    <input type="password" id="password" name="password"
+                                        class="form-control form-control-lg" ng-model="newUser.password"
+                                        ng-required="true" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/" />
                                     <span ng-show="myForm.password.$error.pattern && myForm.password.$touched">
-                                        Password must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 8 characters long.
+                                        Password must contain at least one uppercase letter, one lowercase letter, one
+                                        digit, and be at least 8 characters long.
                                     </span>
                                 </div>
-                                <button class="signup-button" type="submit" ng-disabled="myForm.$invalid">Register</button>
+
+                                <button class="signup-button" type="submit" ng-disabled="myForm.$invalid">
+                                    Register
+                                </button>
+
                                 <p class="error-message" ng-if="errorMessage">{{ errorMessage }}</p>
                             </div>
                         </form>
+
                         <div>
                             <p class="mb-0">Already have an account? <a ui-sref="login" class="login-link">Login</a></p>
                         </div>
