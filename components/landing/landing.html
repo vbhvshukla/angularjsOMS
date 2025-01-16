@@ -1,0 +1,58 @@
+<style>
+    .gradient-custom {
+        background: #2d2d2d;
+        background: -webkit-linear-gradient(to right, rgb(59, 59, 59), rgb(23, 23, 24));
+        background: linear-gradient(to right, rgba(59, 59, 59), rgba(23, 23, 24))
+    }
+
+    section {
+        height: 100vh
+    }
+
+    .btn-custom {
+        background-color: #ff7043;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 30px;
+        font-size: 18px;
+    }
+
+    .btn-custom:hover {
+        background-color: #e64a19;
+    }
+
+    .hero-section {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+
+    .hero-section h1 {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        margin-top: 20px;
+    }
+</style>
+<section class="gradient-custom">
+    <div class="container py-0">
+        <div class="row hero-section">
+            <div class="col-12">
+                <h1>Welcome to Our Application</h1>
+                <p>Effortless management, powerful tools, and a seamless experience</p>
+                <div class="cta-button">
+                    <a ui-sref="login" class="btn btn-custom">Click here to begin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

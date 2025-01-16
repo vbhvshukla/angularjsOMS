@@ -1,0 +1,159 @@
+<style>
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    /* } */
+    */ body,
+    html {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .gradient-custom {
+        background: #2d2d2d;
+        background: -webkit-linear-gradient(to right, rgb(59, 59, 59), rgb(23, 23, 24));
+        background: linear-gradient(to right, rgba(59, 59, 59), rgba(23, 23, 24));
+        height: 100%;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-row {
+        width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-card {
+        background-color: #343a40;
+        color: white;
+        border-radius: 1rem;
+        padding: 40px;
+        width: 100vh;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    .login-card-body {
+        padding: 0;
+    }
+
+    .mb-md-5 {
+        margin-bottom: 3rem;
+    }
+
+    .mt-md-4 {
+        margin-top: 2rem;
+    }
+
+    .pb-5 {
+        padding-bottom: 3rem;
+    }
+
+    .login-heading {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    .login-subheading {
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 2rem;
+    }
+
+    .form-outline {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-outline input {
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: white;
+        padding: 15px;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 0.5rem;
+        outline: none;
+    }
+
+    .form-outline input:focus {
+        border-color: #43caff;
+    }
+
+    .form-label {
+        position: absolute;
+        top: -20px;
+        left: 2px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+
+    }
+
+    .login-button {
+        background-color: transparent;
+        border: 2px solid #ff7043;
+        color: white;
+        font-size: 1.2rem;
+        padding: 15px 30px;
+        border-radius: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .login-button:hover {
+        background-color: #ff7043;
+        color: white;
+    }
+
+    .sign-up-link {
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .sign-up-link:hover {
+        color: #ff7043;
+    }
+</style>
+<section class="gradient-custom" ng-controller="authController">
+    <div class="login-container">
+        <div class="login-row">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="login-card">
+                    <div class="login-card-body">
+                        <form ng-submit="login(authUser)">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <h2 class="login-heading">Login</h2>
+                                <p class="login-subheading">Please enter your login and password!</p>
+                                <div class="form-outline">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input type="text" id="username" class="form-control form-control-lg"
+                                        ng-model="authUser.username" ng-model-options="{ debounce: 250 }" />
+                                </div>
+                                <div class=" form-outline">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password" class="form-control form-control-lg"
+                                        ng-model="authUser.password" ng-model-options="{ debounce: 250 }" ng-required/>
+                                </div>
+                                <button class=" login-button" type="submit">Login</button>
+                            </div>
+                        </form>
+                        <div>
+                            <p class="mb-0">Don't have an account?
+                                <a ui-sref="register" class="sign-up-link">Register</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
