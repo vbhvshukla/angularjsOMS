@@ -89,10 +89,13 @@ mainApp.run([
     $rootScope.$on("$stateChangeStart", function (event, toState) {
       if (toState.resolve && toState.resolve.auth) {
         toState.resolve.auth
-          .then(function () {})
+          .then(function () {
+            console.log("gya");
+          })
           .catch(function () {
             event.preventDefault();
           });
+        console.log("chal ja bhai");
       }
     });
   },

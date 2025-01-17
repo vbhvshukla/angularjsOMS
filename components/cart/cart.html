@@ -6,7 +6,7 @@
         padding: 20px;
         margin: 20px;
         text-align: center;
-        flex: 1 1 calc(33.333% - 40px); /* Adjust width and margin */
+        flex: 1 1 calc(33.333% - 40px);
         box-sizing: border-box;
     }
 
@@ -112,6 +112,5 @@
         <div class="empty-cart-message" ng-if="cart.length === 0">Sorry, the cart is empty</div>
         <div class="total-amount" ng-if="cart.length > 0">Total: ${{totalAmount}}</div>
         <button class="place-order-button" ng-click="placeOrder()" ng-if="cart.length > 0">Place Order</button>
-        <!-- <button class="view-products-button" ng-click="goToProducts()">Go to Products</button> -->
     </div>
 </section>
