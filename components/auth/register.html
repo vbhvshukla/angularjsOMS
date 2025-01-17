@@ -1,139 +1,16 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body,
-    html {
-        height: 100vh;
-        font-family: Arial, sans-serif;
-    }
-
-    .gradient-custom {
-        background: #2d2d2d;
-        background: -webkit-linear-gradient(to right, rgb(59, 59, 59), rgb(23, 23, 24));
-        background: linear-gradient(to right, rgba(59, 59, 59), rgba(23, 23, 24));
-        height: 100%;
-    }
-
-    .signup-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .signup-row {
-        width: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .signup-card {
-        background-color: #343a40;
-        color: white;
-        border-radius: 1rem;
-        padding: 40px;
-        width: 100vh;
-        max-width: 500px;
-        text-align: center;
-    }
-
-    .signup-card-body {
-        padding: 0;
-    }
-
-    .mb-md-5 {
-        margin-bottom: 3rem;
-    }
-
-    .mt-md-4 {
-        margin-top: 2rem;
-    }
-
-    .pb-5 {
-        padding-bottom: 3rem;
-    }
-
-    .signup-heading {
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-    }
-
-    .signup-subheading {
-        color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 2rem;
-    }
-
-    .form-outline {
-        position: relative;
-        margin-bottom: 1.5rem;
-    }
-
-    .form-outline input {
-        background-color: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        color: white;
-        padding: 15px;
-        font-size: 1rem;
-        width: 100%;
-        border-radius: 0.5rem;
-        outline: none;
-    }
-
-    .form-outline input:focus {
-        border-color: #ff7043;
-    }
-
-    .form-label {
-        position: absolute;
-        top: -20px;
-        left: 2px;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    .signup-button {
-        background-color: transparent;
-        border: 2px solid #ff7043;
-        color: white;
-        font-size: 1.2rem;
-        padding: 15px 30px;
-        border-radius: 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .signup-button:hover {
-        background-color: #ff7043;
-        color: white;
-    }
-
-    .login-link {
-        color: rgba(255, 255, 255, 0.7);
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    .login-link:hover {
-        color: #ff7043;
-    }
-</style>
 <section class="gradient-custom" ng-controller="authController">
-    <div class="signup-container">
-        <div class="signup-row">
+    <div class="register-container">
+        <div class="register-row">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="signup-card">
-                    <div class="signup-card-body">
-                        <form name="myForm" ng-submit="register(newUser)" novalidate>
+                <div class="register-card">
+                    <div class="register-card-body">
+                        <form ng-submit="register(newUser)" name="myForm">
                             <div class="mb-md-5 mt-md-4 pb-5">
-                                <h2 class="signup-heading">Register</h2>
-                                <p class="signup-subheading">Please enter your username and password!</p>
-
+                                <h2 class="register-heading">Register</h2>
+                                <p class="register-subheading">Please enter your details to create an account!</p>
+                                <div ng-if="errorMessage" class="alert alert-danger">
+                                    {{ errorMessage }}
+                                </div>
                                 <div class="form-outline">
                                     <label class="form-label" for="username">Username</label>
                                     <input type="text" id="username" name="username"
@@ -155,16 +32,15 @@
                                     </span>
                                 </div>
 
-                                <button class="signup-button" type="submit" ng-disabled="myForm.$invalid">
+                                <button class="register-button" type="submit" ng-disabled="myForm.$invalid">
                                     Register
                                 </button>
-
-                                <p class="error-message" ng-if="errorMessage">{{ errorMessage }}</p>
                             </div>
                         </form>
-
                         <div>
-                            <p class="mb-0">Already have an account? <a ui-sref="login" class="login-link">Login</a></p>
+                            <p class="mb-0">Already have an account?
+                                <a ui-sref="login" class="sign-in-link">Sign In</a>
+                            </p>
                         </div>
                     </div>
                 </div>

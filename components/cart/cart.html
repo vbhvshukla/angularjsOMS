@@ -1,120 +1,38 @@
-<style>
-    .cart-card {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin: 20px;
-        text-align: center;
-        flex: 1 1 calc(33.333% - 40px);
-        box-sizing: border-box;
-    }
-
-    .cart-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .cart-card img {
-        max-width: 100%;
-        border-radius: 10px;
-    }
-
-    .cart-card h3 {
-        font-size: 1.5rem;
-        margin: 10px 0;
-    }
-
-    .cart-card p {
-        font-size: 1rem;
-        color: #666;
-    }
-
-    .cart-card .price {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin: 10px 0;
-    }
-
-    .cart-card .btn-custom {
-        background-color: #ff7043;
-        color: white;
-        border-radius: 20px;
-        padding: 10px 30px;
-        font-size: 18px;
-        border: none;
-        cursor: pointer;
-    }
-
-    .cart-card .btn-custom:hover {
-        background-color: #e64a19;
-    }
-
-    .view-products-button {
-        background-color: #ff7043;
-        color: white;
-        border-radius: 20px;
-        padding: 10px 30px;
-        font-size: 18px;
-        border: none;
-        cursor: pointer;
-        margin: 20px auto;
-        display: block;
-        text-align: center;
-    }
-
-    .view-products-button:hover {
-        background-color: #e64a19;
-    }
-    .total-amount {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin: 20px 0;
-        text-align: center;
-    }
-
-    .place-order-button {
-        background-color: #ff7043;
-        color: white;
-        border-radius: 20px;
-        padding: 10px 30px;
-        font-size: 18px;
-        border: none;
-        cursor: pointer;
-        margin: 20px auto;
-        display: block;
-        text-align: center;
-    }
-
-    .place-order-button:hover {
-        background-color: #e64a19;
-    }
-    .empty-cart-message {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #666;
-        text-align: center;
-        margin: 20px 0;
-    }
-</style>
 <section ng-controller="productsController" class="gradient-custom">
-    <div class="container py-0">
+    <div class="container">
+        <header class="cart-header">
+            <h1>Your Shopping Cart</h1>
+        </header>
         <div class="cart-container" ng-if="cart.length > 0">
             <div class="cart-card" ng-repeat="product in cart" ng-if="product">
                 <img ng-src="{{product.image}}" alt="{{product.name}}" ng-if="product.image">
-                <h3 ng-if="product.name">{{product.name}}</h3>
-                <p class="price" ng-if="product.price">${{product.price}}</p>
-                <p ng-if="product.quantity">Quantity: {{product.quantity}}</p>
-                <div ng-if="product.selectedAddon && product.selectedAddon.length > 0">
-                    <p>Selected Addons:</p>
-                   {{product.selectedAddon}}
+                <div class="cart-details">
+                    <h3 ng-if="product.name">{{product.name}}</h3>
+                    <p class="price" ng-if="product.price">${{product.price}}</p>
+                    <p ng-if="product.selectedAddon && product.selectedAddon.length > 0">
+                        Addons: {{product.selectedAddon.join(', ')}}
+                    </p>
                 </div>
-                <button class="btn btn-custom" ng-click="removeFromCart(product)">Remove from Cart</button>
+                <div class="cart-actions">
+                    <div class="cart-quantity-selector">
+                        <button ng-click="decreaseQuantity(product)">-</button>
+                        <span>{{product.quantity}}</span>
+                        <button ng-click="increaseQuantity(product)">+</button>
+                    </div>
+                    <button class="btn btn-custom" ng-click="removeFromCart(product)">
+                        <img src="assets/icons/deleteSvg.svg" alt="Remove">
+                        Remove Item
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="empty-cart-message" ng-if="cart.length === 0">Sorry, the cart is empty</div>
-        <div class="total-amount" ng-if="cart.length > 0">Total: ${{totalAmount}}</div>
-        <button class="place-order-button" ng-click="placeOrder()" ng-if="cart.length > 0">Place Order</button>
+        <div class="empty-cart-message" ng-if="cart.length === 0">
+            Your cart is empty. Start adding items!
+        </div>
+        <div class="cart-summary" ng-if="cart.length > 0">
+            <div class="total-amount">Total: ${{totalAmount}}</div>
+            <button class="place-order-button" ng-click="placeOrder()">Place Order</button>
+            <button class="continue-shopping-button" ng-click="continueShopping()">Continue Shopping</button>
+        </div>
     </div>
 </section>

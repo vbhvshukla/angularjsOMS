@@ -1,87 +1,18 @@
-<style>
-   
-    .navbar {
-        background-color: #fff;
-        padding: 10px 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 20px auto;
-        max-width: 1300px; 
-    }
-
-    .navbar-logo img {
-        height: 60px; 
-        width: auto;
-    }
-
-    .navbar-list {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-    }
-
-    .navbar-item {
-        margin: 0 20px;
-    }
-
-    .navbar-link, .logout-button {
-        color: white;
-        background-color: #ff7043; 
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 20px;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        text-align: center;
-    }
-
-    .navbar-link:hover, .logout-button:hover {
-        background-color: #e64a19; 
-    }
-
-    .navbar-link.active {
-        background-color: #e64a19; 
-    }
-
-    @media screen and (max-width: 768px) {
-        .navbar {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .navbar-list {
-            flex-direction: column;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .navbar-item {
-            margin: 10px 0;
-        }
-    }
-</style>
-
 <div ng-controller="navbarController">
     <nav ng-show="showNavbar" class="navbar">
-
         <div class="navbar-logo">
             <img src="/assets/images/logo.jpg" alt="Logo">
         </div>
+        /\/\/\/\/\/\/\/\/\/\/\GoooooooooooooD FooooooooooD/\/\/\/\/\/\/\/\/\/\/\
         <ul class="navbar-list">
             <li class="navbar-item" ng-show="!isActive('/products')">
                 <a ui-sref="products" class="navbar-link">Products</a>
             </li>
             <li class="navbar-item" ng-show="!isActive('/cart')">
-                <a ui-sref="cart" class="navbar-link">Cart</a>
+                <a ui-sref="cart" class="navbar-link">
+                    <img src="assets/icons/cart.svg" alt="Cart" class="navbar-icon">
+                    
+                </a>
             </li>
             <li class="navbar-item" ng-show="!isActive('/orders')">
                 <a ui-sref="orders" class="navbar-link">Orders</a>
@@ -92,4 +23,3 @@
         </ul>
     </nav>
 </div>
-

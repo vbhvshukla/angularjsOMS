@@ -1,0 +1,122 @@
+.product-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+}
+
+.product-card img {
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 1rem;
+    color: var(--gray-600);
+}
+
+.product-card .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-card .addons {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    margin: 10px 0;
+}
+
+.product-quantity-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.product-quantity-selector button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.product-quantity-selector button:hover {
+    background-color: #FFA500;
+}
+
+.product-quantity-selector span {
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.div-addons {
+    padding: 10px;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.addon-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--gray-300);
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.addon-select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.btn-custom-addToCart {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-custom:hover {
+    background-color: #FFA500;
+}
+
+.view-cart-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+    display: block;
+    text-align: center;
+}
+
+.view-cart-button:hover {
+    background-color: #FFA500;
+}

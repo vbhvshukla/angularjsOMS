@@ -1,0 +1,81 @@
+.gradient-custom {
+    background: linear-gradient(to right, #FFE280, #FFAE00);
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.register-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.register-card-body {
+    padding: 20px;
+}
+
+.register-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.register-subheading {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.form-outline {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 1rem;
+    color: var(--gray-700);
+}
+
+.form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--gray-300);
+}
+
+.register-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.register-button:disabled {
+    background-color: var(--gray-300);
+    cursor: not-allowed;
+}
+
+.sign-in-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.sign-in-link:hover {
+    text-decoration: underline;
+}
+
+.alert-danger {
+    color: var(--white);
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+}
