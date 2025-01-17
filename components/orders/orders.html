@@ -76,8 +76,8 @@
                         <h3>Order #{{order.orderId}}</h3>
                         <div class="order-items">
                             <p class="price">Order Items:</p>
-                            <div class="order-item" ng-repeat="item in order.items track by item.id">
-                                {{item.name}}
+                            <div class="order-item" ng-repeat="item in order.items track by $index">
+                                {{item.name}} - {{item.quantity}} x {{item.price | currency}}
                             </div>
                         </div>
                     </div>

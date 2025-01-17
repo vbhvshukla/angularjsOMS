@@ -106,6 +106,10 @@
                 <h3 ng-if="product.name">{{product.name}}</h3>
                 <p class="price" ng-if="product.price">${{product.price}}</p>
                 <p ng-if="product.quantity">Quantity: {{product.quantity}}</p>
+                <div ng-if="product.selectedAddon && product.selectedAddon.length > 0">
+                    <p>Selected Addons:</p>
+                   {{product.selectedAddon}}
+                </div>
                 <button class="btn btn-custom" ng-click="removeFromCart(product)">Remove from Cart</button>
             </div>
         </div>

@@ -65,7 +65,7 @@ mainApp.controller("productsController", [
     };
 
     $scope.removeFromCart = function (product) {
-      cartService.removeFromCart(product).then(
+      cartService.removeFromCart(product.id).then(
         (message) => {
           product.inCart = false;
           product.quantity = 0;
@@ -109,8 +109,7 @@ mainApp.controller("productsController", [
     }
 
     $scope.placeOrder = function () {
-      const productIds = $scope.cart.map((item) => item.id);
-      ordersService.placeOrder(productIds).then(
+      ordersService.placeOrder($scope.cart).then(
         (message) => {
           cartService.clearCart().then(() => {
             $scope.cart = [];
