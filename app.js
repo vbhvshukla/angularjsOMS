@@ -1,5 +1,5 @@
 var mainApp = angular
-  .module("mainApp", ["ui.router"])
+  .module("mainApp", ["ui.router","ngAnimate"])
   .config(function (
     $stateProvider,
     $urlMatcherFactoryProvider,

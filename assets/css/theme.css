@@ -88,3 +88,24 @@ body {
 .text-center {
     text-align: center;
 }
+
+.fade-in {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.fade-in.ng-enter {
+    opacity: 0;
+}
+
+.fade-in.ng-enter-active {
+    opacity: 1;
+}
+
+.fade-in.ng-leave {
+    opacity: 1;
+}
+
+.fade-in.ng-leave-active {
+    opacity: 0;
+}

@@ -16,6 +16,7 @@
 
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
@@ -35,8 +36,8 @@
 </head>
 
 <body>
-  <div ng-include="'components/navbar/navbar.html'"></div>
-  <div ui-view></div>
+  <div ng-include="'components/navbar/navbar.html'" ></div>
+  <div ui-view class="fade-in"></div>
 </body>
 
 </html>
