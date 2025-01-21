@@ -28,7 +28,12 @@ mainApp.controller("authController", [
       authService.login(credentials).then(
         function (response) {
           $rootScope.user = response;
-          $state.go("products");
+          if(response.role==="admin"){
+            $state.go("admin");
+          }
+          else{
+            $state.go("products");
+          }
         },
         function (error) {
           $scope.errorMessage = error;

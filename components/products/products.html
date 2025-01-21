@@ -14,7 +14,7 @@
                 <div ng-if="!product.inCart">
                     <button class="btn-custom-addToCart" ng-click="addToCart(product)">Add to Cart</button>
                 </div>
-                <div class="product-quantity-selector" ng-if="product.inCart ">
+                <div class="product-quantity-selector" ng-if="product.inCart">
                     <button ng-click="decreaseQuantity(product)">-</button>
                     <span>{{product.quantity}}</span>
                     <button ng-click="increaseQuantity(product)">+</button>

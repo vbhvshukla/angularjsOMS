@@ -30,6 +30,27 @@ mainApp.factory("indexedDbService", function ($q) {
       addons: ["Mushrooms", "Garlic", "Parmesan"],
       image: "/assets/images/pasta.jpg",
     },
+    {
+      id: 4,
+      name: "Dumpling",
+      price: 13.99,
+      addons: ["Mushrooms", "Garlic", "Parmesan"],
+      image: "/assets/images/dumpling.jpg",
+    },
+    {
+      id: 5,
+      name: "Cake",
+      price: 9.99,
+      addons: ["Cream", "Eggless", "Strawberries"],
+      image: "/assets/images/cake.jpg",
+    },
+    {
+      id: 6,
+      name: "Pancake",
+      price: 16.99,
+      addons: ["Cream", "Honey", "Butter"],
+      image: "/assets/images/pancake.jpg",
+    },
   ];
 
   function openDb() {

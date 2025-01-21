@@ -1,0 +1,199 @@
+.admin-section {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.admin-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.btn-logout {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-logout:hover {
+    background-color: #e53935;
+}
+
+.admin-content {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.admin-orders-section, .admin-products-section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.admin-orders-section h2, .admin-products-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.admin-orders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.admin-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+}
+
+.admin-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.admin-card p {
+    font-size: 1rem;
+    color: #777;
+    margin: 5px 0;
+}
+
+.order-items h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.order-items ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-items li {
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.btn-cancel {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background-color: #e53935;
+}
+
+.btn-add {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.btn-add:hover {
+    background-color: #45a049;
+}
+
+.addons-section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.addons-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.addons-section div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.addons-section input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.addons-section button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.addons-section button[type="button"] {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.addons-section button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+.addons-section button[type="button"].add-addon {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.addons-section button[type="button"].add-addon:hover {
+    background-color: #45a049;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}

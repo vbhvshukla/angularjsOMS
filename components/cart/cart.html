@@ -9,9 +9,6 @@
                 <div class="cart-details">
                     <h3 ng-if="product.name">{{product.name}}</h3>
                     <p class="price" ng-if="product.price">${{product.price}}</p>
-                    <p ng-if="product.selectedAddon && product.selectedAddon.length > 0">
-                        Addons: {{product.selectedAddon.join(', ')}}
-                    </p>
                 </div>
                 <div class="cart-actions">
                     <div class="cart-quantity-selector">

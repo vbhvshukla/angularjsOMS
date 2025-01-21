@@ -89,7 +89,7 @@ mainApp.controller("productsController", [
       };
       cartService.addToCart(cartItem).then(
         (message) => {
-          calculateTotal(); // Recalculate total after updating cart
+          calculateTotal(); 
           console.log(message);
         },
         (error) => {

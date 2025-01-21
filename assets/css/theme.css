@@ -1,3 +1,14 @@
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 /* Color Scheme */
 :root {
     --primary-color: #FFB30E;
@@ -109,3 +120,4 @@ body {
 .fade-in.ng-leave-active {
     opacity: 0;
 }
+

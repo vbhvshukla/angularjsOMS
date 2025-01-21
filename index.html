@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/orders.css">
   <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
 
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -28,7 +29,9 @@
   <script src="/components/products/productsController.js"></script>
   <script src="/components/orders/ordersController.js"></script>
   <script src="/components/navbar/navbarController.js"></script>
+  <script src="/components/admin/adminController.js"></script>
   <script src="/components/auth/AuthService.js"></script>
+  <script src="/components/admin/AdminService.js"></script>
   <script src="/components/products/ProductService.js"></script>
   <script src="/components/cart/CartService.js"></script>
   <script src="/components/orders/OrdersService.js"></script>
@@ -36,7 +39,7 @@
 </head>
 
 <body>
-  <div ng-include="'components/navbar/navbar.html'" ></div>
+  <div ng-include="'components/navbar/navbar.html'"></div>
   <div ui-view class="fade-in"></div>
 </body>
 
